@@ -17,17 +17,17 @@ if (head->n > head->next->n)
 {
 temp = head;
 if (head->prev != NULL)
-head->prev->next = temp->next;
-head->next->prev = temp->prev;
 head->prev = temp->next;
 head->next = temp->next->next;
+head->prev->next = temp->next;
 head->prev->next = temp;
+head->next->prev = temp->prev;
 if (head->next != NULL)
 head->next->prev = temp;
 if (head->prev->prev == NULL)
 *list = head->prev;
-print_list(*list);
 head = *list;
+print_list(*list);
 break;
 }
 head = head->next;
