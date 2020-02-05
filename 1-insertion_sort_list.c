@@ -1,33 +1,36 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "sort.h"
 /**
- * insertion_sort_list - function to sorting list with insertion
- * @list: pointer to point of listint_t
- * Return: void
- */
+* @list : dobly linked list
+* insertion_sort_list - sorting in an ascending manner
+*/
 void insertion_sort_list(listint_t **list)
 {
-listint_t *New_list;
+listint_t *x, *head;
 if (list == NULL)
 return;
-New_list = (*list)->next;
-while (New_list != NULL)
+head = *list;
+while (head->next != NULL)
 {
-while (New_list->prev != NULL && New_list->prev->n > New_list->n)
-{
-New_list->prev->next = New_list->next;
-if (New_list->next != NULL)
-New_list->next->prev = New_list->prev;
-New_list->next = New_list->prev;
-New_list->prev = New_list->prev->prev;
-New_list->next->prev = New_list;
-if (New_list->prev == NULL)
-*list = New_list;
-else
-New_list->prev->next = New_list;
+  while (head->next != NULL)
+  {
+    if (head->n > head->next->n)
+  {
+  x = head;
+  if (head->prev != NULL)
+  head->prev->next = x->next;
+  head->next->prev = x->prev;
+  head->prev = x->next;
+  head->next = x->next->next;
+  head->prev->next = x;
+if (head->next != NULL)
+head->next->prev = x;
+if (head->prev->prev == NULL)
+*list = head->prev;
 print_list(*list);
+head = *list;
+break;
 }
-New_list = New_list->next;
+head = head->next;
+}
 }
 }
