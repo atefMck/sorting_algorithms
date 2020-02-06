@@ -28,4 +28,7 @@ void swapInt(int *array, int pos);
 void insertion_sort_list(listint_t **list);
 void swapNode(listint_t *node, listint_t *node1);
 
+void selection_sort(int *array, size_t size);
+int swapIntS(int *array, int pos1, int pos2);
+
 #endif

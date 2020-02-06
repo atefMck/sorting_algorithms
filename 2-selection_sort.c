@@ -1,24 +1,26 @@
 #include "sort.h"
 
 /**
-* bubble_sort - Function bubble sorting ascendingly an array
+* selection_sort - Function selection sorting ascendingly an array
 *
 * @array: The array to be sorted
 * @size: Size of the array
 */
 
-void bubble_sort(int *array, size_t size)
+void selection_sort(int *array, size_t size)
 {
-size_t i, j;
+size_t i, j, min_index;
 for (i = 0; i < size; i++)
 {
-for (j = 0; j < size - i - 1; j++)
+min_index = i;
+for (j = i + 1; j < size; j++)
 {
-if (array[j] > array[j + 1])
-{
-swapInt(array, j);
-print_array(array, size);
+if (array[min_index] > array[j])
+min_index = j;
 }
+if (swapIntS(array, i, min_index))
+{
+print_array(array, size);
 }
 }
 }
@@ -29,10 +31,13 @@ print_array(array, size);
 * @array: Pointer to the array
 * @pos: Position of int to swap
 */
-void swapInt(int *array, int pos)
+int swapIntS(int *array, int pos1, int pos2)
 {
 int aux;
-aux = array[pos];
-array[pos] = array[pos + 1];
-array[pos + 1] = aux;
+if (pos1 == pos2)
+return (0);
+aux = array[pos1];
+array[pos1] = array[pos2];
+array[pos2] = aux;
+return (1);
 }
