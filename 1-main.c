@@ -1,34 +1,54 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Function bubble sorting ascendingly an array
+ * create_listint - Creates a doubly linked list from an array of integers
  *
- * @array: The array to be sorted
+ * @array: Array to convert to a doubly linked list
  * @size: Size of the array
+ *
+ * Return: Pointer to the first element of the created list. NULL on failure
  */
-
-void bubble_sort(int *array, size_t size)
+listint_t *create_listint(const int *array, size_t size)
 {
-int i;
-for (i = 0; i < size - 1; i++) {
-  if (array[i] > array[i + 1]) {
-    swapInt(array[i], array[i + 1]);
-    print_array(array, size);
-  }
-}
+    listint_t *list;
+    listint_t *node;
+    int *tmp;
+
+    list = NULL;
+    while (size--)
+    {
+        node = malloc(sizeof(*node));
+        if (!node)
+            return (NULL);
+        tmp = (int *)&node->n;
+        *tmp = array[size];
+        node->next = list;
+        node->prev = NULL;
+        list = node;
+        if (list->next)
+            list->next->prev = list;
+    }
+    return (list);
 }
 
 /**
- * swapInt - Swaps two integers
+ * main - Entry point
  *
- * @a: First int
- * @b: Second int
+ * Return: Always 0
  */
-
-void swapInt(int a, int b)
+int main(void)
 {
-int aux;
-aux = a;
-a = b;
-b = aux;
+    listint_t *list;
+    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    size_t n = sizeof(array) / sizeof(array[0]);
+
+    list = create_listint(array, n);
+    if (!list)
+        return (1);
+    print_list(list);
+    printf("\n");
+    insertion_sort_list(&list);
+    printf("\n");
+    print_list(list);
+    return (0);
 }

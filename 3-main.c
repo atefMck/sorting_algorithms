@@ -1,34 +1,19 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Function bubble sorting ascendingly an array
+ * main - Entry point
  *
- * @array: The array to be sorted
- * @size: Size of the array
+ * Return: Always 0
  */
-
-void bubble_sort(int *array, size_t size)
+int main(void)
 {
-int i;
-for (i = 0; i < size - 1; i++) {
-  if (array[i] > array[i + 1]) {
-    swapInt(array[i], array[i + 1]);
-    print_array(array, size);
-  }
-}
-}
+    int array[] = {19, 48, 99, 71, 13, 52, 96, 73, 86, 7};
+    size_t n = sizeof(array) / sizeof(array[0]);
 
-/**
- * swapInt - Swaps two integers
- *
- * @a: First int
- * @b: Second int
- */
-
-void swapInt(int a, int b)
-{
-int aux;
-aux = a;
-a = b;
-b = aux;
+    print_array(array, n);
+    printf("\n");
+    selection_sort(array, n);
+    printf("\n");
+    print_array(array, n);
+    return (0);
 }
