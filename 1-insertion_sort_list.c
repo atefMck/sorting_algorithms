@@ -1,7 +1,7 @@
 #include "sort.h"
 /**
-* @list : dobly linked list
 * insertion_sort_list - sorting in an ascending manner
+* @list : dobly linked list
 */
 void insertion_sort_list(listint_t **list)
 {
@@ -11,17 +11,17 @@ return;
 head = *list;
 while (head->next != NULL)
 {
-  while (head->next != NULL)
-  {
-    if (head->n > head->next->n)
-  {
-  x = head;
-  if (head->prev != NULL)
-  head->prev->next = x->next;
-  head->next->prev = x->prev;
-  head->prev = x->next;
-  head->next = x->next->next;
-  head->prev->next = x;
+while (head->next != NULL)
+{
+if (head->n > head->next->n)
+{
+x = head;
+if (head->prev != NULL)
+head->prev->next = x->next;
+head->next->prev = x->prev;
+head->prev = x->next;
+head->next = x->next->next;
+head->prev->next = x;
 if (head->next != NULL)
 head->next->prev = x;
 if (head->prev->prev == NULL)
