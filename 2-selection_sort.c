@@ -26,10 +26,12 @@ print_array(array, size);
 }
 
 /**
-* swapInt - Swaps two integers of an array
+* swapIntS - Swaps two non consecutive integers of an array
 *
 * @array: Pointer to the array
-* @pos: Position of int to swap
+* @pos1: Position of int to swap
+* @pos2: Position of second int to swap
+* Return: Status
 */
 int swapIntS(int *array, int pos1, int pos2)
 {
