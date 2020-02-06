@@ -18,7 +18,6 @@ if (array[j] > array[j + 1])
 {
 swapInt(array, j);
 print_array(array, size);
-atef
 }
 }
 }
